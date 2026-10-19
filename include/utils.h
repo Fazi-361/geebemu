@@ -1,0 +1,11 @@
+#include <inttypes.h>
+#include <stdbool.h>
+
+/**
+ * @brief Extracts a bit from a 8 bit integer in the specified location
+ * @param num The byte to operate on
+ * @param position Number 0-7 that specifies the location of the bit. 0 = LSB
+ * @return `true` if the bit in the specified location is 1, else `false` 
+ * @note The function always returns 0 if `position` is outside of the 0-7 range is given.
+ */
+_Bool extractBit(uint8_t num, int position);
