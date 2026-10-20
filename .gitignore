@@ -1,6 +1,7 @@
 /build/
 /cmake-build-*/
-/.vscode/ipch/
+/.vscode/ipch/\
+/tests/
 
 # technical reference
 gbctr.pdf

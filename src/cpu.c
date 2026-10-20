@@ -6,14 +6,10 @@
 RegisterFile newRegisterFile(){
     RegisterFile registerFile;
 
-    registerFile.a = 0;
-    registerFile.b = 0;
-    registerFile.c = 0;
-    registerFile.d = 0;
-    registerFile.e = 0;
-    registerFile.f = 0;
-    registerFile.h = 0;
-    registerFile.l = 0;
+    registerFile.af.value = 0;
+    registerFile.bc.value = 0;
+    registerFile.de.value = 0;
+    registerFile.hl.value = 0;
 
     registerFile.ir = 0;
     registerFile.ie = 0;
@@ -25,7 +21,7 @@ RegisterFile newRegisterFile(){
 }
 
 void updateFlags(Cpu* cpu){
-    uint8_t *f= &cpu->registerFile.f;
+    uint8_t *f= &cpu->registerFile.af.lo;
 
     // flag register
     // 7 6 5 4 3 2 1 0
@@ -47,13 +43,21 @@ Cpu newCPU(){
 void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize){
     RegisterFile *r = &cpu->registerFile;
     snprintf(buffer, bufferSize, 
-        "a: %d\tf: %d\n"
-        "b: %d\tc: %d\n"
-        "d: %d\te: %d\n"
-        "h: %d\tl: %d\n"
-        "ir: %d\tie: %d\n"
-        "pc: %d\tsp: %d",
+        "a: %02x\tf: %02x\n"
+        "b: %02x\tc: %02x\tbc: %04x\n"
+        "d: %02x\te: %02x\tde: %04x\n"
+        "h: %02x\tl: %02x\thl: %04x\n"
+        "ir: %02x\tie: %02x\n"
+        "pc: %02x\tsp: %02x",
 
-        r->a, r->f, r->b, r->c, r->d, r->e, r->h, r->l, r->ir, r->ie, r->pc, r->sp
+        r->af.hi, r->af.lo, 
+        r->bc.hi, r->bc.lo, r->bc.value, 
+        r->de.hi, r->de.lo, r->de.value,
+        r->hl.hi, r->hl.lo, r->hl.value,
+        r->ir, r->ie, r->pc, r->sp
     );
+}
+
+void load_r8_n8(uint8_t *r8, uint8_t n8){
+    *r8 = n8;
 }

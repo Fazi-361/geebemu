@@ -1,14 +1,22 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
+typedef union{
+    uint16_t value;
+    struct {
+        uint8_t lo;
+        uint8_t hi;
+    };
+}Register16;
+
 typedef struct{
     // accumulator  // flags register
-    uint8_t a;      uint8_t f;
+    Register16 af;
     
     // General purpose combinable 8-bit registers 
-    uint8_t b;      uint8_t c;
-    uint8_t d;      uint8_t e;
-    uint8_t h;      uint8_t l;
+    Register16 bc;
+    Register16 de;
+    Register16 hl;
 
     uint8_t ir;     // instruction register
     uint8_t ie;     // interrupt enable
@@ -68,6 +76,6 @@ void load_r8_r8(uint8_t *r8_1, uint8_t *r8_2);
 /**
  * @brief Copy the value n8 in register r8
  * @param r8 Pointer to the register we want to load to
- * @param n8 Pointer we want to load from
+ * @param n8 Number we want to load
  */
 void load_r8_n8(uint8_t *r8, uint8_t n8);
