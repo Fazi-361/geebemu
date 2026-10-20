@@ -47,3 +47,27 @@ void updateFlags(Cpu* cpu);
  * @return guess what
  */
 Cpu newCPU();
+
+/**
+ * @brief Prints all the register values
+ * @param cpu A pointer to the CPU structure
+ * @param buffer A buffer where to print the characters to
+ */
+void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize);
+
+// Actual Assembly operations
+
+/**
+ * @brief Copy (aka Load) the value in register on the right into the register on the left.
+ * @param r8_1 Pointer to the register we want to load to
+ * @param r8_2 Pointer we want to load from
+ */
+void load_r8_r8(uint8_t *r8_1, uint8_t *r8_2);
+
+
+/**
+ * @brief Copy the value n8 in register r8
+ * @param r8 Pointer to the register we want to load to
+ * @param n8 Pointer we want to load from
+ */
+void load_r8_n8(uint8_t *r8, uint8_t n8);

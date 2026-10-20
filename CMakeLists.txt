@@ -1,5 +1,6 @@
 
 cmake_minimum_required(VERSION 3.22)
+# include(CTest)
 
 project(GeeBEmu LANGUAGES C)
 
@@ -40,3 +41,15 @@ else()
         -Wall -Wextra -Wpedantic
     )
 endif()
+
+add_executable(cputest 
+    "tests/cputests.c"
+    ${GEEMEMU_SOURCES}
+)
+
+target_include_directories(cputest PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+
+# # Collega raylib e le sue dipendenze.
+# target_link_libraries(geebemu PRIVATE raylib)

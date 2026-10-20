@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <inttypes.h>
 #include "cpu.h"
 #include "utils.h"
@@ -41,4 +42,18 @@ Cpu newCPU(){
     cpu.registerFile = newRegisterFile();
     updateFlags(&cpu);
     return cpu;
+}
+
+void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize){
+    RegisterFile *r = &cpu->registerFile;
+    snprintf(buffer, bufferSize, 
+        "a: %d\tf: %d\n"
+        "b: %d\tc: %d\n"
+        "d: %d\te: %d\n"
+        "h: %d\tl: %d\n"
+        "ir: %d\tie: %d\n"
+        "pc: %d\tsp: %d",
+
+        r->a, r->f, r->b, r->c, r->d, r->e, r->h, r->l, r->ir, r->ie, r->pc, r->sp
+    );
 }
