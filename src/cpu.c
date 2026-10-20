@@ -3,7 +3,7 @@
 #include "cpu.h"
 #include "utils.h"
 
-RegisterFile newRegisterFile(){
+RegisterFile newRegisterFile() {
     RegisterFile registerFile;
 
     registerFile.af.value = 0;
@@ -20,8 +20,8 @@ RegisterFile newRegisterFile(){
     return registerFile;
 }
 
-void updateFlags(Cpu* cpu){
-    uint8_t *f= &cpu->registerFile.af.lo;
+void updateFlags(Cpu* cpu) {
+    uint8_t* f = &cpu->registerFile.af.lo;
 
     // flag register
     // 7 6 5 4 3 2 1 0
@@ -33,15 +33,15 @@ void updateFlags(Cpu* cpu){
 
 }
 
-Cpu newCPU(){
+Cpu newCPU() {
     Cpu cpu;
     cpu.registerFile = newRegisterFile();
     updateFlags(&cpu);
     return cpu;
 }
 
-void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize){
-    RegisterFile *r = &cpu->registerFile;
+void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize) {
+    RegisterFile* r = &cpu->registerFile;
     snprintf(buffer, bufferSize, 
         "a: %02x\tf: %02x\n"
         "b: %02x\tc: %02x\tbc: %04x\n"
@@ -58,6 +58,6 @@ void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize){
     );
 }
 
-void load_r8_n8(uint8_t *r8, uint8_t n8){
+void load_r8_n8(uint8_t *r8, uint8_t n8) {
     *r8 = n8;
 }

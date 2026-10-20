@@ -3,7 +3,7 @@
 
 #include "utils.h"
 
-_Bool extractBit(uint8_t num, int position){
+_Bool extractBit(uint8_t num, int position) {
     if (position < 0 || position > 8){
         return false;
     }

@@ -1,15 +1,15 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-typedef union{
+typedef union {
     uint16_t value;
     struct {
         uint8_t lo;
         uint8_t hi;
     };
-}Register16;
+} Register16;
 
-typedef struct{
+typedef struct {
     // accumulator  // flags register
     Register16 af;
     
@@ -26,17 +26,17 @@ typedef struct{
     
 } RegisterFile;
 
-typedef struct{
+typedef struct {
     _Bool z;    // Zero flag, enabled if last operation == 0
     _Bool n;    // Subtraction flag, enabled if last instruction was a subtraction
     _Bool h;    // Half carry flag, indicates carry for the lower 4 bits of the result
     _Bool c;    // Carry flag, indicates whether there resulted in an underflow or overflow.
 } Flags;
 
-typedef struct{
+typedef struct {
     RegisterFile registerFile;
     Flags flags;
-}Cpu;
+} Cpu;
 
 /**
  * @brief generates an empty RegisterFile structure
