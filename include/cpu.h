@@ -24,6 +24,7 @@ typedef struct {
     uint16_t pc;    // program counter
     uint16_t sp;    // stack pointer
     
+    uint8_t addressBus[0xFFFF];
 } RegisterFile;
 
 typedef struct {
@@ -79,3 +80,47 @@ void load_r8_r8(uint8_t *r8_1, uint8_t *r8_2);
  * @param n8 Number we want to load
  */
 void load_r8_n8(uint8_t *r8, uint8_t n8);
+
+/**
+ * @brief Copy the value n16 in register r16
+ * 
+ * @param r16 Pointer to the 16 bit register we want to load to
+ * @param n16 Number to load in the 16 bit register 
+ */
+void load_r16_n16(Register16* r16, uint16_t n16);
+
+/**
+ * @brief Copy the value in register r8 in the address pointed to by HL
+ * 
+ * @param addressBus Pointer to the address bus 
+ * @param hl Pointer to the hl register HL
+ * @param r8 Pointer to the 8 bit register we want to load from
+ */
+void load_ahl_r8(uint8_t* addressBus, Register16* hl, uint8_t* r8);
+
+/**
+ * @brief Copy the value n8 into the address pointed to by hl
+ * 
+ * @param addressBus Pointer to the address bus 
+ * @param hl Pointer to the hl register
+ * @param n8 Number we want to load
+ */
+void load_ahl_n8(uint8_t* addressBus, Register16* hl, uint8_t n8);
+
+/**
+ * @brief Copy the value in the address pointed to by hl in r8
+ * 
+ * @param addressBus Pointer to the address bus 
+ * @param hl Pointer to the hl register 
+ * @param r8 Pointer to the 8 bit register we want to load to
+ */
+void load_r8_ahl(uint8_t* addressBus, uint8_t* r8, Register16* hl);
+
+/**
+ * @brief Copy the value in register A into the byte pointed to by r16.
+ * 
+ * @param addressBus Pointer to the address bus 
+ * @param r16 Pointer to the register we want to load from
+ * @param a Pointer to the accumulator register
+ */
+void load_ar16_a(uint8_t* addressBus, uint16_t* r16, uint8_t* a);
