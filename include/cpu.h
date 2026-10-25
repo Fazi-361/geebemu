@@ -23,8 +23,6 @@ typedef struct {
 
     uint16_t pc;    // program counter
     uint16_t sp;    // stack pointer
-    
-    uint8_t addressBus[0xFFFF];
 } RegisterFile;
 
 typedef struct {
@@ -37,13 +35,8 @@ typedef struct {
 typedef struct {
     RegisterFile registerFile;
     Flags flags;
+    uint8_t addressBus[0xFFFF];
 } Cpu;
-
-/**
- * @brief generates an empty RegisterFile structure
- * @return an empty register file
- */
-RegisterFile newRegisterFile();
 
 /**
  * @brief Reads the F register and toggles the corresponding flags

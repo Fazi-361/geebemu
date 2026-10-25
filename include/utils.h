@@ -8,4 +8,12 @@
  * @return `true` if the bit in the specified location is 1, else `false` 
  * @note The function always returns 0 if `position` is outside of the 0-7 range is given.
  */
-_Bool extractBit(uint8_t num, int position);
+_Bool utils_extractBit(uint8_t num, int position);
+
+uint8_t utils_extractByteHi(uint16_t num);
+
+uint8_t utils_extractByteLo(uint16_t num);
+
+uint16_t utils_mergeBytesBE(uint8_t lo, uint8_t hi);
+
+uint16_t utils_mergeBytesLE(uint8_t lo, uint8_t hi);

@@ -4,6 +4,6 @@
 
 int main(void)
 {
-    Cpu cpu = newCPU();
+    // Cpu cpu = newCPU();
     return 0;
 }

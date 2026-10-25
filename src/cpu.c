@@ -2,6 +2,7 @@
 #include <inttypes.h>
 #include "cpu.h"
 #include "utils.h"
+#include "bus.h"
 
 RegisterFile newRegisterFile() {
     RegisterFile registerFile;
@@ -26,10 +27,10 @@ void updateFlags(Cpu* cpu) {
     // flag register
     // 7 6 5 4 3 2 1 0
     // Z N H C 0 0 0 0
-    cpu->flags.z = extractBit(*f, 7);
-    cpu->flags.n = extractBit(*f, 6);
-    cpu->flags.h = extractBit(*f, 5);
-    cpu->flags.c = extractBit(*f, 4);
+    cpu->flags.z = utils_extractBit(*f, 7);
+    cpu->flags.n = utils_extractBit(*f, 6);
+    cpu->flags.h = utils_extractBit(*f, 5);
+    cpu->flags.c = utils_extractBit(*f, 4);
 
 }
 
@@ -58,6 +59,12 @@ void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize) {
     );
 }
 
-void load_r8_n8(uint8_t *r8, uint8_t n8) {
-    *r8 = n8;
+// Assembly functions
+
+void load_r8_n8(uint8_t *r8, uint8_t n8)         { *r8 = n8; }
+void load_r8_r8(uint8_t *r8_1, uint8_t *r8_2)    { *r8_1 = *r8_2; }
+void load_r16_n16(Register16* r16, uint16_t n16) { r16->value = n16; }
+
+void load_ahl_r8(uint8_t* addressBus, Register16* hl, uint8_t* r8) {
+    bus_write8(addressBus, hl->value, *r8);
 }

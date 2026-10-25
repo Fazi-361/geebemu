@@ -51,5 +51,14 @@ target_include_directories(cputest PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
+add_executable(bustest 
+    "tests/bustests.c"
+    ${GEEMEMU_SOURCES}
+)
+
+target_include_directories(bustest PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+
 # # Collega raylib e le sue dipendenze.
 # target_link_libraries(geebemu PRIVATE raylib)

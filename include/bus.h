@@ -40,23 +40,7 @@ typedef struct {
  * 
  * @return MemoryMap 
  */
-MemoryMap newMemoryMap() {
-    MemoryMap mm;
-
-    mm.rom.bank00  = {0x0000, 0x3FFF};
-    mm.rom.bankNN  = {0x4000, 0x7FFF};
-    mm.vRam        = {0x8000, 0x9FFF};
-    mm.exRam       = {0xA000, 0xBFFF};
-    mm.wRam        = {0xC000, 0xDFFF};
-    mm.echoRam     = {0xE000, 0xFDFF};
-    mm.oam         = {0xFE00, 0xFE9F};
-    mm.forbidden   = {0xFEA0, 0XFEFF};
-    mm.ioRegisters = {0xFF00, 0xFF7F};
-    mm.hRam        = {0xFF80, 0xFFFE};
-    mm.enableIE    = {0xFFFF, 0xFFFF};
-
-    return mm;
-}
+MemoryMap newMemoryMap();
 
 /**
  * @brief Writes a byte in the specified memory location
