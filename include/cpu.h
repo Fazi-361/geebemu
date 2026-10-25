@@ -83,7 +83,7 @@ void load_r8_n8(uint8_t *r8, uint8_t n8);
 void load_r16_n16(Register16* r16, uint16_t n16);
 
 /**
- * @brief Copy the value in register r8 in the address pointed to by HL
+ * @brief Copy the value in register r8 to the address pointed to by HL
  * 
  * @param addressBus Pointer to the address bus 
  * @param hl Pointer to the hl register HL

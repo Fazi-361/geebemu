@@ -17,9 +17,10 @@ set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(external/raylib)
 
 # Sorgenti di GeeBEmu.
-file(GLOB GEEMEMU_SOURCES CONFIGURE_DEPENDS
+file(GLOB_RECURSE GEEMEMU_SOURCES CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c"
 )
+
 
 add_executable(geebemu
     geebemu.c
