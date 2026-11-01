@@ -57,6 +57,13 @@ Cpu newCPU();
  */
 void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize);
 
+// Fetch Decode Execute
+
+uint8_t fetchByte(Cpu *cpu);
+uint16_t fetch16(Cpu *cpu);
+void advance(Cpu *cpu);
+
+
 // Actual Assembly operations
 
 /**
@@ -117,3 +124,20 @@ void load_r8_ahl(uint8_t* addressBus, uint8_t* r8, Register16* hl);
  * @param a Pointer to the accumulator register
  */
 void load_ar16_a(uint8_t* addressBus, uint16_t* r16, uint8_t* a);
+
+
+// ---- ARITHMETIC / LOGIC SHTUFF ------
+
+/**
+ * @brief Rotate the value in r8 left circularly
+ * 
+ * @param r8 Pointer to the 8 bit register
+ */
+void rlc_r8(uint8_t* r8);
+
+/**
+ * @brief Rotate the value in r8 right circularly
+ * 
+ * @param r8 Pointer to the 8 bit register
+ */
+void rrc_r8(uint8_t* r8);

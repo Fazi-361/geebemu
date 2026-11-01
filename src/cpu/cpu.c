@@ -58,3 +58,67 @@ void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize) {
         r->ir, r->ie, r->pc, r->sp
     );
 }
+
+
+// Fetch Decode Execute: Big function incoming!
+
+uint8_t fetchByte(Cpu *cpu){
+    uint8_t byte = bus_read8(cpu->addressBus, cpu->registerFile.pc++);
+    return byte;
+}
+
+uint16_t fetch16(Cpu *cpu){
+    return bus_read16(cpu->addressBus, cpu->registerFile.pc++);
+}
+
+void advance(Cpu *cpu){
+    uint16_t opcode;
+    uint8_t op1 = fetchByte(cpu);
+
+    switch (op1){
+        case 0x00: {
+            break;
+        }
+
+        // RLCA
+        case 0x07:{
+            rlc_r8(&cpu->registerFile.af.hi);
+            break;
+        }
+
+        // RRCA
+        case 0x0F:{
+            rrc_r8(&cpu->registerFile.af.hi);
+            break;
+        }
+
+        // RLA
+        case 0x17: {
+            cpu->registerFile.af.hi << 1;
+        }
+
+        // RRA
+        case 0x1F: {
+            cpu->registerFile.af.hi >> 1;
+        }
+
+        //
+
+        // TODO: change to HALT
+        case 0x76: {
+            break;
+        }
+
+        // TODO: change to DI
+        case 0xF3: {
+            break;
+        }
+
+        // TODO: change to EI
+        case 0xFB: {
+            break;
+        }
+
+
+    }
+}
