@@ -19,9 +19,16 @@ cmake --build build --config Release
 
 The project will be built in `build/bin`
 
-## Todo / Remember
+## Todo
 
-[ ] Power-Up Sequence
-[ ] Halt flags etc
-[ ] Fetch - Decode - Execute loop
-[ ] IMPORTANT! Make helpers to update flags
+- CPU stuff
+  - Implement all the opcodes
+  - Finish Fetch / Decode / Execute cycle
+  - Implement special flags like HALT
+- Load cartridge
+  - Power-Up sequence
+- Graphics
+  - Implement video functionality
+- Audio
+
+May add more in the future.
