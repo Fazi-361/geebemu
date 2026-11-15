@@ -35,7 +35,7 @@ typedef struct {
 typedef struct {
     RegisterFile registerFile;
     Flags flags;
-    uint8_t addressBus[0xFFFF];
+    uint8_t addressBus[0x10000];
 } Cpu;
 
 /**
