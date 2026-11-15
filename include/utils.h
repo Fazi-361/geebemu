@@ -1,7 +1,9 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-void utils_toggleBit (uint8_t *num, int position);
+void utils_setBit (uint8_t *num, int position);
+
+void utils_unsetBit (uint8_t *num, int position);
 
 /**
  * @brief Extracts a bit from a 8 bit integer in the specified location

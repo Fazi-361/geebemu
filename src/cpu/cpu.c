@@ -74,7 +74,31 @@ void setFlag(Cpu *cpu, char flag){
         case 'c':
             bit = 4;
     }
-    utils_toggleBit(&cpu->registerFile.af.lo, bit);
+    utils_setBit(&cpu->registerFile.af.lo, bit);
+    updateFlags(cpu);
+}
+
+void unsetFlag(Cpu *cpu, char flag){
+    uint8_t bit = 0;
+    switch (flag) {
+        case 'z':
+            bit = 7;
+            break;
+        case 'n':
+            bit = 6;
+            break;
+        case 'h':
+            bit = 5;
+            break;
+        case 'c':
+            bit = 4;
+    }
+    utils_unsetBit(&cpu->registerFile.af.lo, bit);
+    updateFlags(cpu);
+}
+
+void resetFlags(Cpu *cpu){
+    cpu->registerFile.af.lo = 0;
     updateFlags(cpu);
 }
 
@@ -117,7 +141,6 @@ void advance(Cpu *cpu){
             if (carry) { 
                 setFlag(cpu, 'c');
             }
-
             break;
         }
 
