@@ -1,6 +1,8 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
+void utils_toggleBit (uint8_t *num, int position);
+
 /**
  * @brief Extracts a bit from a 8 bit integer in the specified location
  * @param num The byte to operate on

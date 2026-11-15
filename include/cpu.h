@@ -57,8 +57,31 @@ Cpu newCPU();
  */
 void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize);
 
-// Fetch Decode Execute
+/**
+ * @brief Sets the desired flag (z, n, h, c)
+ * 
+ * @param cpu Pointer to the CPU structure
+ * @param flag Flag to turn on
+ */
+void setFlag(Cpu *cpu, char flag);
 
+/**
+ * @brief Turns off the desired flag (z, n, h, c)
+ * 
+ * @param cpu Pointer to the CPU structure
+ * @param flag Flag to turn off
+ */
+void unsetFlag(Cpu *cpu, char flag);
+
+/**
+ * @brief Resets all the flags to 0
+ * 
+ * @param cpu Pointer to the CPU structure
+ */
+void resetFlags(Cpu *cpu);
+
+
+// Fetch Decode Execute
 uint8_t fetchByte(Cpu *cpu);
 uint16_t fetch16(Cpu *cpu);
 void advance(Cpu *cpu);

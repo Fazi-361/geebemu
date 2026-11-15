@@ -24,3 +24,4 @@ The project will be built in `build/bin`
 [ ] Power-Up Sequence
 [ ] Halt flags etc
 [ ] Fetch - Decode - Execute loop
+[ ] IMPORTANT! Make helpers to update flags

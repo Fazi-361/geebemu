@@ -3,6 +3,12 @@
 
 #include "utils.h"
 
+
+void utils_toggleBit (uint8_t *num, int position){
+    uint8_t mask = 1 << position;
+    *num |= mask;
+}
+
 _Bool utils_extractBit(uint8_t num, int position) {
     if (position < 0 || position > 8){
         return false;

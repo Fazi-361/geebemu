@@ -59,6 +59,24 @@ void dumpRegisters(Cpu *cpu, char buffer[], size_t bufferSize) {
     );
 }
 
+void setFlag(Cpu *cpu, char flag){
+    uint8_t bit = 0;
+    switch (flag) {
+        case 'z':
+            bit = 7;
+            break;
+        case 'n':
+            bit = 6;
+            break;
+        case 'h':
+            bit = 5;
+            break;
+        case 'c':
+            bit = 4;
+    }
+    utils_toggleBit(&cpu->registerFile.af.lo, bit);
+    updateFlags(cpu);
+}
 
 // Fetch Decode Execute: Big function incoming!
 
@@ -94,12 +112,19 @@ void advance(Cpu *cpu){
 
         // RLA
         case 0x17: {
+            _Bool carry = cpu->registerFile.af.hi % 2 == 1; 
             cpu->registerFile.af.hi << 1;
+            if (carry) { 
+                setFlag(cpu, 'c');
+            }
+
+            break;
         }
 
         // RRA
         case 0x1F: {
             cpu->registerFile.af.hi >> 1;
+            break;
         }
 
         //
