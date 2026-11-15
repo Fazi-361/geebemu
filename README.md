@@ -32,3 +32,14 @@ The project will be built in `build/bin`
 - Audio
 
 May add more in the future.
+
+## AI disclosure
+
+Generative AI was used to do the following tasks.
+
+- Helping me create the repository structure
+- Writing Git commit messages
+- Writing CMakelists.txt
+- Writing tests
+
+The rest of the emulator code is human made slop.
